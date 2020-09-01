@@ -23,7 +23,7 @@ stop:
 	sudo docker container stop $(shell cat $(container_id_file) )
 
 rm:
-	stop
+	sudo docker container stop $(shell cat $(container_id_file) )
 	sudo docker container rm $(shell cat $(container_id_file) )
 	sudo rm $(container_id_file)
 
