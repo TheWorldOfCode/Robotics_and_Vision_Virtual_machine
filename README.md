@@ -8,7 +8,7 @@ it install vim as a editor. All files in the dictory root will be copy to the
 root folder in the container. 
 
 
-This required docker to have it own group
+This required docker to have it own group, which is shown in the first part on this [page](https://docs.docker.com/engine/install/linux-postinstall/)
 ## Make file
 In order to simplify the commands need are the provided a make file that
 handles allmust every thing. 
