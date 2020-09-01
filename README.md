@@ -7,6 +7,8 @@ The dockerfile setups Robwork, OpenCV3 and PointCloudLibrary. Furthermore will
 it install vim as a editor. All files in the dictory root will be copy to the
 root folder in the container. 
 
+
+This required docker to have it own group
 ## Make file
 In order to simplify the commands need are the provided a make file that
 handles allmust every thing. 
