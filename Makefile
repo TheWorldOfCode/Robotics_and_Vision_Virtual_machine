@@ -8,6 +8,7 @@ buildrm:
 	sudo docker rmi $(image)
 
 create:
+	xhost local:docker
 	sudo docker run -it \
 		--cidfile $(container_id_file) \
 		-e DISPLAY \
@@ -17,6 +18,7 @@ create:
 		$(image) 
 
 start:
+	xhost local:docker
 	sudo docker container start $(shell cat $(container_id_file) )
 
 stop:
