@@ -25,6 +25,8 @@ RUN add-apt-repository ppa:sdurobotics/robwork \
                           libsdurwsim-all-dev \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt update && apt install -y libassimp-dev && rm -rf /var/lib/apt/lists/*
+
 COPY ./root /root 
 
 

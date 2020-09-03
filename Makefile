@@ -11,6 +11,7 @@ create:
 	xhost local:docker
 	sudo docker run -it \
 		--cidfile $(container_id_file) \
+		--device /dev/dri:/dev/dri \
 		-e DISPLAY \
 		-e QT_X11_NO_MITSHM=1 \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \

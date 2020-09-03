@@ -1,0 +1,14 @@
+<CollisionSetup>
+    <Exclude><!--
+	<FramePair first="Fence1" second="Fence2" />
+	<FramePair first="Fence1" second="Floor" />
+	<FramePair first="Fence2" second="Floor" /> -->
+	<FramePair first="LightFrame" second="Floor" />
+	<FramePair first="Table" second="Floor" />
+	<FramePair first="Pallet" second="Floor" />
+	<FramePair first="LightFrame" second="Light" />
+	<FramePair first="KukaKr16.Joint5" second="PG70.Base" />	
+	<FramePair first="KukaKr16.Joint6" second="PG70.Base" /> 
+	<FramePair first="KukaKr16.Base" second="Scene" /> 
+   </Exclude>
+</CollisionSetup>
