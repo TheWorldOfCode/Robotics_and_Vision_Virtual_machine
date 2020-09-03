@@ -23,6 +23,7 @@ RUN add-apt-repository ppa:sdurobotics/robwork \
                           libsdurws-all-dev \
                           libsdurwhw-all-dev \
                           libsdurwsim-all-dev \
+                          python3-sdurw* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt update && apt install -y libassimp-dev && rm -rf /var/lib/apt/lists/*
@@ -32,3 +33,7 @@ COPY ./root /root
 
 # Extra
 RUN apt update && apt install -y vim git && rm -rf /var/lib/apt/lists/*
+
+
+# Setting python
+RUN rm /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python 
