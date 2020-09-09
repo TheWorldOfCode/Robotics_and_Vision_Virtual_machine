@@ -5,7 +5,9 @@ machine that are provide in the course.
 
 The dockerfile setups Robwork, OpenCV3 and PointCloudLibrary. Furthermore will
 it install vim as a editor. All files in the dictory root will be copy to the
-`/home/user` folder in the container. The folder execise is mount into root folder in the container, this means that chances to the files in the container will be save in the execise folder outside the container. But beware changes to files outside the folder execise will not be saved and will be delete if container is delete. When you enter the container are you signed in as a user `user` and the password is `user`.
+`/home/user` folder in the container. The folder execise is mount into root folder in the container, this means that chances to the files in the container will be save in the execise folder outside the container. But beware changes to files outside the folder execise will not be saved and will be delete if container is delete. When you enter the container are you signed in as a user `user` and the password is `user`. 
+
+The port 22 on the container is mapped to port 2222 on the localhost interface.
 
 
 This required docker to have it own group, which is shown in the first part on this [page](https://docs.docker.com/engine/install/linux-postinstall/). (The first 3 step) 
