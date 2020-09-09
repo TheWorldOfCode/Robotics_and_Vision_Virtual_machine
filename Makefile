@@ -13,11 +13,15 @@ create:
 		--cidfile $(container_id_file) \
 		--device /dev/dri:/dev/dri \
 		-e DISPLAY \
-		-v $(shell pwd)/execise:/root/execise \
+		-v $(shell pwd)/execise:/home/user/execise \
 		-e QT_X11_NO_MITSHM=1 \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-v ~/.Xauthority:/root/.Xauthority \
+		--cap-add sys_ptrace \
+		-p127.0.0.1:2222:22 \
 		$(image) 
+	
+	$(shell ssh-keygen -f "$HOME/.ssh/known_hosts" -R "[localhost]:2222")
 
 start:
 	xhost local:docker

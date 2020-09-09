@@ -28,12 +28,27 @@ RUN add-apt-repository ppa:sdurobotics/robwork \
 
 RUN apt update && apt install -y libassimp-dev && rm -rf /var/lib/apt/lists/*
 
-COPY ./root /root 
+# Setup user 
+RUN useradd -m user -p "$(openssl passwd -1 user)"
+RUN usermod -aG sudo user 
+
+
+COPY ./root /home/user
 
 
 # Extra
-RUN apt update && apt install -y vim git && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y vim \
+                                 git \
+                                 ssh \
+                                 openssh* \
+                                 sudo \
+               && rm -rf /var/lib/apt/lists/*
+
 
 
 # Setting python
 RUN rm /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python 
+
+# Setting user and the workdir
+USER user
+WORKDIR /home/user 
