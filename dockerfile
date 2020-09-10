@@ -49,6 +49,13 @@ RUN apt update && apt install -y vim \
 # Setting python
 RUN rm /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python 
 
+RUN sed -i 's/#*PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
+RUN mkdir /var/run/sshd
+ENV NOTVISIBLE "in users profile"
+RUN echo "export VISIBLE=now" >> /etc/profile
 # Setting user and the workdir
 USER user
 WORKDIR /home/user 
+

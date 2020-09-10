@@ -26,6 +26,7 @@ create:
 start:
 	xhost local:docker
 	sudo docker container start $(shell cat $(container_id_file) )
+	$(shell ssh-keygen -f "$HOME/.ssh/known_hosts" -R "[localhost]:2222")
 
 stop:
 	sudo docker container stop $(shell cat $(container_id_file) )
