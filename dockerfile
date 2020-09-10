@@ -42,6 +42,7 @@ RUN apt update && apt install -y vim \
                                  ssh \
                                  openssh* \
                                  sudo \
+                                 gdb \
                && rm -rf /var/lib/apt/lists/*
 
 
