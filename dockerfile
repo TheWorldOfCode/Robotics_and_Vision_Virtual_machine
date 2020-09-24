@@ -13,7 +13,9 @@ COPY ./opencv_install.sh /
 RUN sh -e /opencv_install.sh 
 
 # PointCloudLibrary
-RUN apt update && apt install -y libpcl-dev && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y libpcl-dev \
+                                 pcl-tools \
+               && rm -rf /var/lib/apt/lists/*
 
 # RobWork
 RUN apt update && apt -y install software-properties-common dirmngr apt-transport-https lsb-release ca-certificates && rm -rf /var/lib/apt/lists/*
