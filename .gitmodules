@@ -1,0 +1,3 @@
+[submodule "execise/RobVIs2020_project"]
+	path = execise/RobVIs2020_project
+	url = git@github.com:TheWorldOfCode/RobVIs2020_project.git

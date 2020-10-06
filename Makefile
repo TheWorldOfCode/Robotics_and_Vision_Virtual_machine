@@ -19,6 +19,8 @@ create:
 		-v ~/.Xauthority:/root/.Xauthority \
 		--cap-add sys_ptrace \
 		-p127.0.0.1:2222:22 \
+		-v /run/user/1000:/run/user/1000 \
+		-e XDG_RUNTIME_DIR \
 		$(image) 
 	
 	$(shell ssh-keygen -f "$HOME/.ssh/known_hosts" -R "[localhost]:2222")

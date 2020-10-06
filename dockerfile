@@ -19,10 +19,18 @@ RUN apt update && apt install -y libpcl-dev \
 
 # RobWork
 RUN apt update && apt -y install software-properties-common dirmngr apt-transport-https lsb-release ca-certificates && rm -rf /var/lib/apt/lists/*
+
+RUN add-apt-repository ppa:sdurobotics/ur-rtde \
+    && apt-get update \
+    && apt install -y librtde \
+                      librtde-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN add-apt-repository ppa:sdurobotics/robwork \
     && apt-get update \
     && apt-get install -y libsdurw-all-dev \
                           libsdurws-all-dev \
+                          libsdurwhw-universalrobots-rtde-dev \
                           libsdurwhw-all-dev \
                           libsdurwsim-all-dev \
                           python3-sdurw* \
@@ -58,7 +66,9 @@ RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid
 RUN mkdir /var/run/sshd
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
+
 # Setting user and the workdir
 USER user
 WORKDIR /home/user 
+
 
