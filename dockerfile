@@ -38,6 +38,12 @@ RUN add-apt-repository ppa:sdurobotics/robwork \
 
 RUN apt update && apt install -y libassimp-dev && rm -rf /var/lib/apt/lists/*
 
+# Covis
+
+RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
+RUN git clone https://gitlab.com/caro-sdu/covis.git covis
+RUN cd covis; cmake . -Bbuild; cd build; make install -j8
+
 # Setup user 
 RUN useradd -m user -p "$(openssl passwd -1 user)"
 RUN usermod -aG sudo user 
@@ -48,7 +54,6 @@ COPY ./root /home/user
 
 # Extra
 RUN apt update && apt install -y vim \
-                                 git \
                                  ssh \
                                  openssh* \
                                  sudo \
