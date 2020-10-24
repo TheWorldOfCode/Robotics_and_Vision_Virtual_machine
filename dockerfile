@@ -34,6 +34,7 @@ RUN add-apt-repository ppa:sdurobotics/robwork \
                           libsdurwhw-all-dev \
                           libsdurwsim-all-dev \
                           python3-sdurw* \
+                          lua-sdurw* \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt update && apt install -y libassimp-dev && rm -rf /var/lib/apt/lists/*
