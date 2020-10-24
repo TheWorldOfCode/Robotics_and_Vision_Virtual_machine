@@ -30,7 +30,7 @@ RUN add-apt-repository ppa:sdurobotics/robwork \
     && apt-get update \
     && apt-get install -y libsdurw-all-dev \
                           libsdurws-all-dev \
-                          libsdurwhw-universalrobots-rtde-dev \
+#                          libsdurwhw-universalrobots-rtde-dev \
                           libsdurwhw-all-dev \
                           libsdurwsim-all-dev \
                           python3-sdurw* \
