@@ -12,11 +12,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY ./opencv_install.sh /
 RUN sh -e /opencv_install.sh 
 
-# PointCloudLibrary
-RUN apt update && apt install -y libpcl-dev \
-                                 pcl-tools \
-               && rm -rf /var/lib/apt/lists/*
-
 # RobWork
 RUN apt update && apt -y install software-properties-common dirmngr apt-transport-https lsb-release ca-certificates && rm -rf /var/lib/apt/lists/*
 
@@ -39,12 +34,6 @@ RUN add-apt-repository ppa:sdurobotics/robwork \
 
 RUN apt update && apt install -y libassimp-dev && rm -rf /var/lib/apt/lists/*
 
-# Covis
-
-RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
-RUN git clone https://gitlab.com/caro-sdu/covis.git covis
-RUN cd covis; cmake . -Bbuild; cd build; make install -j8
-
 # Setup user 
 RUN useradd -m user -p "$(openssl passwd -1 user)"
 RUN usermod -aG sudo user 
@@ -54,7 +43,8 @@ COPY ./root /home/user
 
 
 # Extra
-RUN apt update && apt install -y vim \
+RUN apt update && apt install -y nano \
+                                 vim \
                                  ssh \
                                  openssh* \
                                  sudo \
@@ -75,6 +65,6 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 # Setting user and the workdir
 USER user
-WORKDIR /home/user 
+WORKDIR /home/user
 
 
