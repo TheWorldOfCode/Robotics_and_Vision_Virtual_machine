@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ros:melodic-ros-base
 
 
 ENV LANG C.UTF-8
@@ -62,6 +62,21 @@ RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid
 RUN mkdir /var/run/sshd
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
+
+RUN apt update
+RUN apt install iputils-ping
+
+# packages needed to run ROS melodic with python2.7
+RUN apt install python2.7
+RUN apt-get install -y python-pip 
+RUN apt-get install -y python3-pip 
+RUN pip install catkin_pkg
+RUN pip install rospkg
+RUN pip install netifaces
+RUN pip install rosdep
+RUN rosdep update 
+#
+RUN rosdep init 
 
 # Setting user and the workdir
 USER user
