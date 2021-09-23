@@ -1,4 +1,4 @@
-image = ros_robwork
+image = ros_robwork_rtde
 container_id_file = ./container_id
 
 build:
@@ -14,7 +14,7 @@ create:
 		--privileged \
 		--device /dev/dri:/dev/dri \
 		-e DISPLAY \
-		-v /home/lpe/Desktop/EiT/:/home/user \
+		-v /home/lpe/Desktop/EiT:/home/user/workspace \
 		-e QT_X11_NO_MITSHM=1 \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-v ~/.Xauthority:/root/.Xauthority \
