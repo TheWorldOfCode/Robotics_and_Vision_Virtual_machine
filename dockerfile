@@ -78,12 +78,6 @@ RUN rosdep update
 #
 #RUN rosdep init 
 
-
-RUN sudo add-apt-repository ppa:sdurobotics/ur-rtde
-RUN sudo apt-get update
-RUN sudo apt install librtde librtde-dev
-RUN pip install ur_rtde
-
 # Setting user and the workdir
 USER user
 RUN mkdir /home/user/workspace
