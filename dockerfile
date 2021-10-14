@@ -75,6 +75,12 @@ RUN pip install rospkg
 RUN pip install netifaces
 RUN pip install rosdep
 RUN rosdep update 
+
+RUN apt-get install libopencv-dev
+RUN apt-get install ros-melodic-cv-bridge
+RUN apt-get update
+RUN apt-get install ros-melodic-cv-bridge
+
 #
 #RUN rosdep init 
 
