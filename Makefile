@@ -1,4 +1,4 @@
-image = ros_robwork_rtde
+image = ros_rtde
 container_id_file = ./container_id
 
 build:
@@ -12,6 +12,7 @@ create:
 	sudo docker run -it \
 		--cidfile $(container_id_file) \
 		--privileged \
+		-v /dev/bus:/dev/bus \
 		--device /dev/dri:/dev/dri \
 		-e DISPLAY \
 		--net=host \

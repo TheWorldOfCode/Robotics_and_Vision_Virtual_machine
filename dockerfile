@@ -12,27 +12,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY ./opencv_install.sh /
 RUN sh -e /opencv_install.sh 
 
-# RobWork
-RUN apt update && apt -y install software-properties-common dirmngr apt-transport-https lsb-release ca-certificates && rm -rf /var/lib/apt/lists/*
-
-RUN add-apt-repository ppa:sdurobotics/ur-rtde \
-    && apt-get update \
-    && apt install -y librtde \
-                      librtde-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN add-apt-repository ppa:sdurobotics/robwork \
-    && apt-get update \
-    && apt-get install -y libsdurw-all-dev \
-                          libsdurws-all-dev \
-#                          libsdurwhw-universalrobots-rtde-dev \
-                          libsdurwhw-all-dev \
-                          libsdurwsim-all-dev \
-                          python3-sdurw* \
-                          lua-sdurw* \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN apt update && apt install -y libassimp-dev && rm -rf /var/lib/apt/lists/*
+RUN apt update 
 
 # Setup user 
 RUN useradd -m user -p "$(openssl passwd -1 user)"
@@ -66,6 +46,8 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 RUN apt update
 RUN apt install iputils-ping
 
+RUN apt-get install software-properties-common -y # used to install rtde
+
 # packages needed to run ROS melodic with python2.7
 RUN apt install python2.7
 RUN apt-get install -y python-pip 
@@ -76,6 +58,7 @@ RUN pip install netifaces
 RUN pip install rosdep
 RUN pip install defusedxml
 RUN pip install scipy
+RUN pip install --upgrade pip
 RUN rosdep update 
 
 RUN apt-get install libopencv-dev -y
@@ -84,6 +67,12 @@ RUN apt-get install ros-melodic-cv-bridge -y
 RUN apt-get install ros-melodic-image-transport-plugins -y
 RUN apt-get install ros-melodic-openni2-launch   -y
 
+
+RUN add-apt-repository ppa:sdurobotics/ur-rtde
+RUN apt-get update
+RUN apt install librtde librtde-dev
+RUN apt-get update
+RUN pip install ur-rtde
 
 #RUN rosdep init 
 
