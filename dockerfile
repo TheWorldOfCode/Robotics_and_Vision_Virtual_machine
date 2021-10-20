@@ -74,14 +74,17 @@ RUN pip install catkin_pkg
 RUN pip install rospkg
 RUN pip install netifaces
 RUN pip install rosdep
+RUN pip install defusedxml
+RUN pip install scipy
 RUN rosdep update 
 
-RUN apt-get install libopencv-dev
-RUN apt-get install ros-melodic-cv-bridge
+RUN apt-get install libopencv-dev -y
 RUN apt-get update
-RUN apt-get install ros-melodic-cv-bridge
+RUN apt-get install ros-melodic-cv-bridge -y
+RUN apt-get install ros-melodic-image-transport-plugins -y
+RUN apt-get install ros-melodic-openni2-launch   -y
 
-#
+
 #RUN rosdep init 
 
 # Setting user and the workdir
