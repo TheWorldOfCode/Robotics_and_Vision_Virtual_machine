@@ -74,13 +74,37 @@ RUN apt install librtde librtde-dev
 RUN apt-get update
 RUN pip install ur-rtde
 
+# ur-sim prereq
+#RUN apt-get install openjdk-8-jdk -y
+#RUN update-java-alternatives -s java-1.8.0-openjdk-amd64 
+#RUN apt-get install libcurl4
 #RUN rosdep init 
+
+# install coppelia sim Edu entities onlyhttps://esolangs.org/wiki/Piet
+RUN cd /home/user/ && \
+		wget https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_2_0_Ubuntu18_04.tar.xz && \
+		tar -xf CoppeliaSim_Edu_V4_2_0_Ubuntu18_04.tar.xz && \
+		rm CoppeliaSim_Edu_V4_2_0_Ubuntu18_04.tar.xz
+
+# install ur-sim sim
+
+#RUN cd /home/user/
+#RUN export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+#RUN export PATH=$PATH:$JAVA_HOME
+
+#RUN wget https://s3-eu-west-1.amazonaws.com/ur-support-site/133393/URSim_Linux-5.11.5.1010327.tar.gz
+#RUN tar xvzf URSim_Linux-5.11.5.1010327.tar.gz 
+#RUN sed -i 's/libcurl3//g' ~/ursim-5.11.5.1010327/install.sh
+#RUN cd /home/user/
+#RUN ./install.sh 
 
 # Setting user and the workdir
 USER user
 RUN mkdir /home/user/workspace
 RUN mkdir /home/user/workspace/src
 WORKDIR /home/user/workspace
+
+
 
 
 

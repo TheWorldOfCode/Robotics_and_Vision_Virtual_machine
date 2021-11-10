@@ -16,7 +16,7 @@ create:
 		--device /dev/dri:/dev/dri \
 		-e DISPLAY \
 		--net=host \
-		-v /home/lpe/Desktop/EiT:/home/user/workspace \
+		-v /home/popt480/EiT:/home/user/workspace \
 		-e QT_X11_NO_MITSHM=1 \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-v ~/.Xauthority:/root/.Xauthority \
